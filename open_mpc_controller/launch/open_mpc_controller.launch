@@ -1,0 +1,10 @@
+<launch>
+    <arg name="agv_name" default="test" />
+    <arg name="namespace" default="$(arg agv_name)"/>
+    <group ns="$(arg namespace)">
+        <node name="open_mpc_controller" pkg="open_mpc_controller" type="open_mpc_controller_node" respawn="true" clear_params="true" output="screen">
+            <rosparam file="$(find open_mpc_controller)/config/open_mpc_controller_$(arg agv_name).yaml" />
+        </node>
+    </group>
+</launch>
+ 
